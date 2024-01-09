@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 06:58:41 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/09 14:32:59 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:00:50 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main(int32_t argc, char **argv)
 	{
 		data.mlx = mlx;
 		ft_load_assets(&data);
-		data.canva = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-		mlx_image_to_window(data.mlx, data.canva, 0, 0);
+		data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
+		mlx_image_to_window(data.mlx, data.image, 0, 0);
 		mlx_loop_hook(data.mlx, ft_button, &data);
 		mlx_loop(data.mlx);
 		mlx_terminate(data.mlx);

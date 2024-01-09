@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/09 14:34:39 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:03:55 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,21 @@ typedef struct s_cords
 	int32_t	height;
 }			t_cords;
 
+typedef struct s_canva
+{
+	mlx_texture_t	*icon;
+	mlx_image_t		*menu;
+}	t_canva;
+
 typedef struct s_data
 {
-	mlx_t			*mlx;
-	mlx_image_t		*canva;
-	int32_t			map_height;
-	int32_t			map_width;
-	t_cords			*cords;
-	mlx_texture_t	*icon;
-}					t_data;
+	mlx_t		*mlx;
+	mlx_image_t	*image;
+	int32_t		map_height;
+	int32_t		map_width;
+	t_cords		*cords;
+	t_canva		canva;
+}				t_data;
 
 
 void	ft_error(char *msn);
