@@ -4,7 +4,7 @@
 
 NAME := fdf
 .DEFAULT_GOAL := all
-.PHONY: all clean fclean re libmlx
+.PHONY: all clean fclean re
 .SILENT:
 
 #! ******************************************************************************#
@@ -22,30 +22,13 @@ RESET = \033[0m
 #                                   PATH                                         #
 #! ******************************************************************************#
 
-SRCS_PATH = ./src
-INCS_PATH = ./src ./lib/libft ./lib/MLX42/include
+SRCS_PATH = ./src/
+INCS_PATH = ./src/ ./lib/libft/include/ ./lib/MLX42/include/
 BUILD_DIR := ./build/
-LIBMLX	:= ./lib/MLX42
+LIBMLX	:= ./lib/MLX42/
 LIBFT_DIR := ./lib/libft/
 MLX42_BUILD_DIR := ./lib/MLX42/build/
 
-#! ******************************************************************************#
-#                             COMMANDS AND FLAGS                                 #
-#! ******************************************************************************#
-
-MKDIR := mkdir -p
-RM := rm -rf
-SLEEP = sleep 0.1
-
-CFLAGS = -Wall -Wextra -Werror
-CC = cc
-DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-LDLIBS = -lft -lmlx42 -ldl -lglfw -pthread -lm
-LDFLAGS = $(addprefix -L,$(dir $(LIBS)))
-OPTFLAGS = -Ofast
-CPPFLAGS = $(addprefix -I,$(INCS_PATH)) -MMD -MP
-COMP_OBJ = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-COMP_EXE = $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 #! ******************************************************************************#
 #                                   DEFINE                                       #
@@ -63,14 +46,31 @@ endif
 #                                   FILES                                        #
 #! ******************************************************************************#
 
-SRCS = main.c
+SRCS = ./src/main.c
 SRCS_BONUS = 
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX42 = $(addprefix $(MLX42_BUILD_DIR), libmlx42.a)
 LIBS := ./lib/libft/libft.a \
 	./lib/MLX42/build/libmlx42.a
+OBJS = $(SRCS:%.c=$(BUILD_DIR)%.o)
 DEPS = $(OBJS:.o=.d)
-OBJS += $(SRCS:%.c=$(BUILD_DIR)%.o)
+
+#! ******************************************************************************#
+#                             COMMANDS AND FLAGS                                 #
+#! ******************************************************************************#
+
+MKDIR := mkdir -p
+RM := rm -rf
+SLEEP = sleep 0.1
+
+CFLAGS = -Wall -Wextra -Werror
+CC = cc
+DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+LDLIBS = -lft -lmlx42 -ldl -lglfw -pthread -lm
+LDFLAGS = $(addprefix -L,$(dir $(LIBS)))
+CPPFLAGS = $(addprefix -I,$(INCS_PATH)) -MMD -MP
+COMP_OBJ = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMP_EXE = $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 #! ******************************************************************************#
 #                                  FUNCTIONS                                     #
