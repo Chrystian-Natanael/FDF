@@ -56,12 +56,16 @@ OBJS = $(SRCS:%.c=$(BUILD_DIR)%.o)
 DEPS = $(OBJS:.o=.d)
 
 #! ******************************************************************************#
-#                             COMMANDS AND FLAGS                                 #
+#                                    COMMANDS                                    #
 #! ******************************************************************************#
 
 MKDIR := mkdir -p
 RM := rm -rf
 SLEEP = sleep 0.1
+
+#! ******************************************************************************#
+#                                     FLAGS                                      #
+#! ******************************************************************************#
 
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
@@ -84,7 +88,7 @@ define comp_objs
 	$(eval COUNT=$(shell expr $(COUNT) + 1))
 	$(COMP_OBJ)
 	$(SLEEP)
-	printf "[%3d%%] $(YELLOW) teste $(basename $(notdir $@)) \r$(RESET)\n" $$(echo $$(($(COUNT) * 100 / $(words $(OBJS)))))
+	printf "[%3d%%] $(YELLOW) Compiling OBJS $(basename $(notdir $@)) \r$(RESET)\n" $$(echo $$(($(COUNT) * 100 / $(words $(OBJS)))))
 endef
 
 define comp_libft
@@ -103,7 +107,7 @@ endef
 
 define comp_exe
 	$(COMP_EXE)
-	printf "$(GREEN)$(NAME) executable built\n$(RESET)"
+	printf "$(GREEN)FDF ->$(RESET)$(PURPLE) READY\n$(RESET)"
 endef
 #! ******************************************************************************#
 #                                   TARGETS                                      #
