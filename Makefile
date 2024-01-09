@@ -125,8 +125,13 @@ $(LIBFT):
 	$(call comp_libft)
 
 clean:
+	$(RM) $(BUILD_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(MLX42_BUILD_DIR)/libmlx42.a
 
 re: fclean all
 
