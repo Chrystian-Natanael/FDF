@@ -88,7 +88,7 @@ define comp_objs
 	$(eval COUNT=$(shell expr $(COUNT) + 1))
 	$(COMP_OBJ)
 	$(SLEEP)
-	printf "[%3d%%] $(YELLOW) Compiling OBJS $(basename $(notdir $@)) \r$(RESET)\n" $$(echo $$(($(COUNT) * 100 / $(words $(OBJS)))))
+	printf "[%3d%%] $(YELLOW)Compiling OBJS $(basename $(notdir $@)) \r$(RESET)\n" $$(echo $$(($(COUNT) * 100 / $(words $(OBJS)))))
 endef
 
 define comp_libft
