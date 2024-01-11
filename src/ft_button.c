@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:51:25 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/09 15:25:59 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:24:00 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,18 @@ void	ft_button(void *param)
 		mlx_close_window(data->mlx);
 		return ;
 	}
-	// ft_move(data);
+	ft_move(data);
+	ft_print_pixel(data);
+}
+
+void	ft_move(t_data *data)
+{
+	if(mlx_is_key_down(data->mlx, MLX_KEY_W))
+		data->camera.pos_y -= MV_SP;
+	else if(mlx_is_key_down(data->mlx, MLX_KEY_S))
+		data->camera.pos_y += MV_SP;
+	else if(mlx_is_key_down(data->mlx, MLX_KEY_A))
+		data->camera.pos_x -= MV_SP;
+	else if(mlx_is_key_down(data->mlx, MLX_KEY_D))
+		data->camera.pos_x += MV_SP;
 }

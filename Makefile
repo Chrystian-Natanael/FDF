@@ -52,7 +52,8 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		ft_parse_map.c \
 		ft_str_append.c\
 		ft_button.c \
-		ft_assets.c)
+		ft_assets.c \
+		ft_camera.c)
 SRCS_BONUS = 
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX42 = $(addprefix $(MLX42_BUILD_DIR), libmlx42.a)
