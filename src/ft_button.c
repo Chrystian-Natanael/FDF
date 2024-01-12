@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:51:25 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 16:25:00 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:28:51 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_change_color(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
 		current_color = (current_color + 1) % NUM_COLORS;
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
-		current_color -= 1;
+		current_color = (current_color - 1) % NUM_COLORS;
 	data->cords->color = ft_get_color(current_color);
 }
 
