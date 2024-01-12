@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 06:58:41 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 11:02:29 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:47:48 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int32_t argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	data.cords = ft_parse_map(&data, argv[1]);
-	ft_printf("A width foi: %d", data.map_width);
+	ft_printf("O Height é: %d \nO Width é: %d", data.map_height, data.map_width); // ! apagar
 	mlx = mlx_init(WIDTH, HEIGHT, "FDF", true);
 	if (mlx)
 	{

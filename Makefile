@@ -48,13 +48,12 @@ endif
 
 SRCS =	$(addprefix $(SRCS_PATH),\
 		main.c \
-		ft_error.c \
 		ft_parse_map.c \
 		ft_str_append.c\
 		ft_button.c \
 		ft_assets.c \
-		ft_camera.c \
-		ft_utils.c)
+		ft_utils.c \
+		ft_draw_line.c)
 SRCS_BONUS = 
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX42 = $(addprefix $(MLX42_BUILD_DIR), libmlx42.a)
