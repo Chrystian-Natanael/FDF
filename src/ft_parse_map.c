@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:30:54 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 11:01:52 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:10:15 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_cords	*ft_parse_map(t_data *data, char *fd_map)
 		free (line);
 	}
 	close (fd);
+	data->cords->color = 0xFFFFFFFF;
 	return (ft_get_cords(data, buffer));
 }
 t_cords	*ft_get_cords(t_data *data, char *line)

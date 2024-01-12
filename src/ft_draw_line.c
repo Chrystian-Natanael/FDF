@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:16:01 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 13:38:39 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:06:10 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	ft_build_lines(t_data *data)
 void	ft_draw_line(t_data *data, int32_t x, int32_t y)
 {
 	if (x != data->map_width -1)
-		ft_plot_line(data->image, ft_projection(x, y, data), ft_projection(x + 1, y, data));
+		ft_plot_line(data, ft_projection(x, y, data), ft_projection(x + 1, y, data));
 	if (y != data->map_height -1)
-		ft_plot_line(data->image, ft_projection(x, y, data), ft_projection(x, y + 1, data));
+		ft_plot_line(data, ft_projection(x, y, data), ft_projection(x, y + 1, data));
 }
-void	ft_plot_line(mlx_image_t *canva, t_point start, t_point end)
+void	ft_plot_line(t_data *data, t_point start, t_point end)
 {
 	t_point	delta;
 	t_point	incr;
@@ -53,10 +53,10 @@ void	ft_plot_line(mlx_image_t *canva, t_point start, t_point end)
 	cur = end;
 	while (true)
 	{
-		if (canva && cur.x > 0 && cur.y > 0)
+		if (data->image && cur.x > 0 && cur.y > 0)
 		{
-			if ((cur.x < (int32_t)canva->width) && (cur.y > 0 && cur.y < (int32_t)canva->height))
-				mlx_put_pixel(canva, cur.x, cur.y, 0xFFFFFFFF);
+			if ((cur.x < (int32_t)data->image->width) && (cur.y > 0 && cur.y < (int32_t)data->image->height))
+				mlx_put_pixel(data->image, cur.x, cur.y, data->cords->color);
 		}
 		if (cur.x == start.x && cur.y == start.y)
 			break ;
