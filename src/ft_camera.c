@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:40:10 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 10:05:24 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:39:10 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	ft_camera_reset(t_data *data)
 	data->camera.pos_y = 500;
 	data->camera.pos_z = 0;
 	data->camera.zoom = 20;
+	data->cords->color = 22578410;
 }
 
-void	ft_print_pixel(t_data *data)
+void	ft_print_big_pixel(t_data *data)
 {
 	double	idx_a;
 	double	idx_b;
-	
 	ft_bzero(data->image->pixels, WIDTH * HEIGHT * sizeof(int32_t));
 	idx_a = data->camera.pos_x;
 	while (idx_a < data->camera.pos_x + 10)
@@ -32,7 +32,7 @@ void	ft_print_pixel(t_data *data)
 		idx_b = data->camera.pos_y;
 		while (idx_b < data->camera.pos_y + 10)
 		{
-			mlx_put_pixel(data->image, idx_a, idx_b, 0xFFFFFFFF);
+			mlx_put_pixel(data->image, idx_a, idx_b, data->cords->color);
 			idx_b++;
 		}
 		idx_a++;

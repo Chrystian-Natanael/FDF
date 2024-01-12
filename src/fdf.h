@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 10:04:07 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:43:18 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 typedef struct	s_cords
 {
-	int32_t	color;
-	int32_t	height;
-}			t_cords;
+	uint32_t	color;
+	int32_t		height;
+}				t_cords;
 
 typedef struct	s_canva
 {
@@ -58,13 +58,15 @@ typedef struct	s_data
 
 int		ft_ternary(int condition, int if_true, int if_false);
 char	*ft_str_append(char *s1, char *s2);
-void	ft_print_pixel(t_data *data);
+void	ft_print_big_pixel(t_data *data);
 void	ft_error(char *msn);
 void	ft_button(void *param);
 void	ft_load_assets(t_data *data);
 void	ft_camera_reset(t_data *data);
 void	ft_move(t_data *data);
 int32_t	ft_isspace(int32_t c);
+int32_t	ft_get_width(char *line);
 t_cords	*ft_parse_map(t_data *data, char *fd_map);
+t_cords	*ft_get_cords(t_data *data, char *line);
 
 #endif

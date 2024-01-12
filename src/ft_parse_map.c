@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:30:54 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 09:59:59 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:01:52 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,50 @@ t_cords	*ft_parse_map(t_data *data, char *fd_map)
 		free (line);
 	}
 	close (fd);
-	return (0);
+	return (ft_get_cords(data, buffer));
+}
+t_cords	*ft_get_cords(t_data *data, char *line)
+{
+	int32_t	size_l;
+	int32_t	idx;
+	t_cords	*cords;
+	char	*line_cpy;
+
+	line_cpy = line;
+	size_l = (int32_t)ft_strlen(line);
+	cords = calloc(size_l + 1, sizeof(t_cords));
+	idx = 0;
+	while (idx < size_l)
+	{
+		while(*line_cpy && ft_isspace(*line_cpy))
+			line_cpy++;
+		cords[idx].height = ft_atoi(line_cpy);
+		while(*line_cpy && !ft_isspace(*line_cpy))
+			line_cpy++;
+		idx++;
+	}
+	data->map_width = ft_get_width(line);
+	free (line);
+	return(cords);
+}
+
+int32_t	ft_get_width(char *line)
+{
+	int32_t	count;
+
+	count = 0;
+	while (*line && *line != '\n')
+	{
+		while (ft_isspace(*line))
+			line++;
+		if (ft_isdigit(*line) || *line == '-')
+			count++;
+		while(*line != ' ' && *line)
+		{
+			if (*line == '\n')
+				break ;
+			line++;
+		}
+	}
+	return (count);
 }
