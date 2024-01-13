@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:51:25 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 16:28:51 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 08:58:36 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@ void	ft_button(void *param)
 
 void	ft_change_color(mlx_key_data_t keydata, void *param)
 {
-	t_data	*data;
+	static uint32_t	current_color = 0;
+	t_data			*data;
 
 	data = (t_data *)param;
-	static uint32_t	current_color = 0;
-
 	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
 		current_color = (current_color + 1) % NUM_COLORS;
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
@@ -66,12 +65,12 @@ uint32_t	ft_get_color(uint32_t current_color)
 
 void	ft_move(t_data *data)
 {
-	if(mlx_is_key_down(data->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 		data->camera.pos_y -= MV_SP;
-	else if(mlx_is_key_down(data->mlx, MLX_KEY_S))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
 		data->camera.pos_y += MV_SP;
-	else if(mlx_is_key_down(data->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 		data->camera.pos_x -= MV_SP;
-	else if(mlx_is_key_down(data->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 		data->camera.pos_x += MV_SP;
 }

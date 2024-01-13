@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 16:24:15 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 08:58:05 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_cam
 	double	pos_y;
 	double	pos_z;
 	int32_t	zoom;
+	int32_t	height;
 }			t_cam;
 
 typedef struct	s_data
@@ -66,9 +67,13 @@ typedef struct	s_data
 
 typedef struct s_point
 {
-	int32_t	x;
-	int32_t	y;
-}			t_point;
+	struct
+	{
+		int32_t	x;
+		int32_t	y;
+	};
+	int32_t		raw[2];
+}				t_point;
 
 typedef enum e_typeline
 {
@@ -89,7 +94,6 @@ typedef enum e_colors
 
 int			ft_ternary(bool condition, int if_true, int if_false);
 char		*ft_str_append(char *s1, char *s2);
-void		ft_error(char *msn);
 void		ft_button(void* param);
 void		ft_load_assets(t_data *data);
 void		ft_camera_reset(t_data *data);
@@ -97,16 +101,18 @@ void		ft_move(t_data *data);
 void		ft_draw_line(t_data *data, int32_t x, int32_t y);
 int32_t		ft_isspace(int32_t c);
 int32_t		ft_get_width(char *line);
+void		ft_error(char *msn);
 t_cords		*ft_parse_map(t_data *data, char *fd_map);
 t_cords		*ft_get_cords(t_data *data, char *line);
 void		ft_change_color(mlx_key_data_t keydata, void *param);
 
-
 void		ft_build_lines(t_data *data);
 void		ft_draw_line(t_data *data, int32_t x, int32_t y);
 void		ft_plot_line(t_data *data, t_point start, t_point end);
-t_point		ft_projection(int32_t x, int32_t y, t_data *data);
+t_point	ft_projection(int32_t x, int32_t y, int32_t z, t_data *data);
 t_point		ft_build_point(int32_t x, int32_t y);
 uint32_t	ft_get_color(uint32_t current_color);
+int32_t		ft_get_z(int32_t x, int32_t y, t_data *data);
+void	ft_isometric(int32_t *x, int32_t *y, int32_t z);
 
 #endif

@@ -6,16 +6,17 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 06:58:41 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 16:05:57 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 08:31:11 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int32_t argc, char **argv)
+int	main(int32_t argc, char **argv)
 {
 	t_data	data;
 	mlx_t	*mlx;
+
 	if (argc == 1 || argc > 2)
 	{
 		ft_printf("USAGE: ./fdf <map_file.fdf>");
@@ -30,7 +31,6 @@ int main(int32_t argc, char **argv)
 		data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 		mlx_image_to_window(data.mlx, data.image, 0, 0);
 		ft_camera_reset(&data);
-		data.cords->color = WHITE;
 		mlx_loop_hook(data.mlx, ft_button, &data);
 		mlx_key_hook(data.mlx, ft_change_color, &data);
 		mlx_loop(data.mlx);
@@ -41,3 +41,5 @@ int main(int32_t argc, char **argv)
 	ft_error("Error: Inicialization failure!");
 	return (EXIT_FAILURE);
 }
+
+

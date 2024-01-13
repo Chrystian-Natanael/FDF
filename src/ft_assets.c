@@ -6,20 +6,20 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:14:04 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/12 13:17:26 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 06:38:40 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fdf.h"
 
-static void	ft_paint_bucket(mlx_image_t *image, int32_t width, int32_t height, uint32_t color);
+static void	ft_paint_bucket(mlx_image_t *image, int32_t width, \
+int32_t height, uint32_t color);
 
 void	ft_load_assets(t_data *data)
 {
 	int32_t	menu_width;
 
 	menu_width = 300;
-
 	data->canva.icon = mlx_load_png("./img/icon.png");
 	mlx_set_icon(data->mlx, data->canva.icon);
 	data->canva.menu = mlx_new_image(data->mlx, menu_width, HEIGHT);
@@ -28,7 +28,8 @@ void	ft_load_assets(t_data *data)
 	ft_paint_bucket(data->canva.menu, menu_width, HEIGHT, 0x404040FF);
 }
 
-void	ft_paint_bucket(mlx_image_t *image, int32_t width, int32_t height, uint32_t color)
+void	ft_paint_bucket(mlx_image_t *image, int32_t width, \
+int32_t height, uint32_t color)
 {
 	int32_t	x;
 	int32_t	y;
