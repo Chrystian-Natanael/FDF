@@ -49,11 +49,11 @@ endif
 SRCS =	$(addprefix $(SRCS_PATH),\
 		main.c \
 		ft_parse_map.c \
-		ft_str_append.c\
-		ft_button.c \
 		ft_assets.c \
 		ft_utils.c \
-		ft_draw_line.c)
+		ft_draw_line.c \
+		ft_projection.c \
+		ft_commands.c)
 SRCS_BONUS = 
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX42 = $(addprefix $(MLX42_BUILD_DIR), libmlx42.a)
@@ -69,13 +69,13 @@ DEPS = $(OBJS:.o=.d)
 MKDIR := mkdir -p
 RM := rm -rf
 SLEEP = sleep 0.1
+CC = cc
 
 #! ******************************************************************************#
-#                                     FLAGS                                      #
+#                                 FLAGS E COMP                                   #
 #! ******************************************************************************#
 
 CFLAGS = -Wall -Wextra -Werror
-CC = cc
 DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LDLIBS = -lft -lmlx42 -ldl -lglfw -pthread -lm
 LDFLAGS = $(addprefix -L,$(dir $(LIBS)))

@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:14:04 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 06:38:40 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 11:28:10 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,27 @@ int32_t height, uint32_t color)
 		y = 0;
 		x++;
 	}
+}
+
+int32_t	ft_get_z(int32_t x, int32_t y, t_data *data)
+{
+	return (data->cords[y * data->map_width + x].height);
+}
+
+uint32_t	ft_get_color(uint32_t current_color)
+{
+	if (current_color == WHITE_COLOR)
+		return (WHITE);
+	else if (current_color == BLUE_COLOR)
+		return (BLUE);
+	else if (current_color == RED_COLOR)
+		return (RED);
+	else if (current_color == GREEN_COLOR)
+		return (GREEN);
+	else if (current_color == PINK_COLOR)
+		return (PINK);
+	else if (current_color == YELLOW_COLOR)
+		return (YELLOW);
+	else
+		return (WHITE);
 }

@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:20:13 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 08:59:14 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 10:12:00 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,24 @@ int	ft_ternary(bool condition, int if_true, int if_false)
 	return (if_false);
 }
 
-void	ft_camera_reset(t_data *data)
+void	ft_camera_projection(t_data *data)
 {
-	data->camera.pos_x = 100;
-	data->camera.pos_y = -800;
+	data->camera.pos.x = 150;
+	data->camera.pos.y = -200;
+	data->camera.x_rot = 0;
+	data->camera.y_rot = 0;
+	data->camera.z_rot = 0;
+	data->camera.zoom = 20;
+	data->camera.height = 40;
+}
+
+void	ft_camera_panoramic(t_data *data)
+{
+	data->camera.pos.x = 0;
+	data->camera.pos.y = 0;
+	data->camera.x_rot = 0;
+	data->camera.y_rot = 0;
+	data->camera.z_rot = 0;
 	data->camera.zoom = 30;
 	data->camera.height = 40;
 }
