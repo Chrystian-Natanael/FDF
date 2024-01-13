@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 11:23:05 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:06:06 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MV_SP 8
 # define ZOOM_SP 1
 # define PROC_SP 2
-# define ROT_SP 0.05
+# define ROT_SP -0.05
 
 # define WHITE 0xFFFFFFFF
 # define BLUE 0x0000FFFF
@@ -76,6 +76,7 @@ typedef struct s_data
 	t_cords		*cords;
 	t_canva		canva;
 	t_cam		camera;
+	bool		auto_spin;
 }				t_data;
 
 typedef struct s_bresen

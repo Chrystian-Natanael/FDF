@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:22:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 11:27:35 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:09:59 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,25 @@ void	ft_zoom(t_data *data)
 
 void	ft_rotation_all(t_data *data)
 {
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		data->camera.y_rot += ROT_SP;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		data->camera.y_rot += ROT_SP;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		data->camera.y_rot -= ROT_SP;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN))
 		data->camera.x_rot += ROT_SP;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_UP))
 		data->camera.x_rot -= ROT_SP;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_Q))
+		data->camera.z_rot += ROT_SP;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_E))
+		data->camera.z_rot -= ROT_SP;
+	if (data->auto_spin == 1)
+	{
+		data->camera.y_rot -= 0.003;
+		data->camera.x_rot += 0.00005;
+		data->camera.z_rot -= 0.0005;
+	}
+	
 }
 
 void	ft_move(t_data *data)
@@ -67,4 +78,11 @@ void	ft_change_color(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
 		current_color = (current_color - 1) % NUM_COLORS;
 	data->cords->color = ft_get_color(current_color);
+	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
+	{
+		if (data->auto_spin == 1)
+			data->auto_spin = 0;
+		else
+			data->auto_spin = 1;
+	}
 }
