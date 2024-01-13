@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:51:25 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 08:58:36 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:09:21 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	ft_button(void *param)
 		ft_camera_reset(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_EQUAL))
 		data->camera.zoom += ZOOM_SP;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_J))
+		data->camera.height += PROC_SP;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_K))
+		data->camera.height -= PROC_SP;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_MINUS) && data->camera.zoom > 0)
 		data->camera.zoom -= ZOOM_SP;
 	ft_move(data);

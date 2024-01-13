@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 08:58:05 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:09:38 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define HEIGHT 1080
 # define MV_SP 5
 # define ZOOM_SP 1
+# define PROC_SP 2
 
 # define WHITE 0xFFFFFFFF
 # define BLUE 0x0000FFFF
