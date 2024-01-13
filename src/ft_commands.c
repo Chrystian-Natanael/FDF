@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:22:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 12:09:59 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:29:41 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	ft_rotation_all(t_data *data)
 		data->camera.x_rot += 0.00005;
 		data->camera.z_rot -= 0.0005;
 	}
-	
 }
 
 void	ft_move(t_data *data)
