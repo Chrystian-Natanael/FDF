@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:22:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 12:29:41 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:19:37 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_commands(t_data *data)
 		data->camera.height += PROC_SP;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_K))
 		data->camera.height -= PROC_SP;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_0))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_2))
 		ft_camera_panoramic(data);
 }
 

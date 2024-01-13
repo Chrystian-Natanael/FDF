@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 12:22:47 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:43:00 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,8 @@ void		ft_rotation_z(int *x, int *y, double z);
 void	ft_commands(t_data *data);
 void	ft_zoom(t_data *data);
 void	ft_rotation_all(t_data *data);
+
+void	ft_render_menu(t_data *data);
+void	ft_explain_commands(t_data *data);
 
 #endif

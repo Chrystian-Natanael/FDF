@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 06:58:41 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 12:15:25 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:57:03 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,21 @@ void	ft_button(void *param)
 	ft_build_lines(data);
 }
 
+void	ft_validate_args(int32_t argc)
+{
+	if (argc != 2)
+	{
+		ft_printf("USAGE: ./fdf <map_file.fdf>");
+		exit(EXIT_FAILURE);
+	}
+}
+
 int	main(int32_t argc, char **argv)
 {
 	t_data	data;
 	mlx_t	*mlx;
 
-	if (argc == 1 || argc > 2)
-	{
-		ft_printf("USAGE: ./fdf <map_file.fdf>");
-		exit(EXIT_FAILURE);
-	}
+	ft_validate_args(argc);
 	data.cords = ft_parse_map(&data, argv[1]);
 	mlx = mlx_init(WIDTH, HEIGHT, "FDF", true);
 	if (mlx)
@@ -49,6 +54,7 @@ int	main(int32_t argc, char **argv)
 		mlx_image_to_window(data.mlx, data.image, 0, 0);
 		data.cords->color = WHITE;
 		ft_camera_projection(&data);
+		ft_render_menu(&data);
 		mlx_loop_hook(data.mlx, ft_button, &data);
 		mlx_key_hook(data.mlx, ft_change_color, &data);
 		mlx_loop(data.mlx);

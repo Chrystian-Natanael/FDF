@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:20:13 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 12:26:07 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:18:10 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_camera_projection(t_data *data)
 	data->camera.x_rot = 0;
 	data->camera.y_rot = 0;
 	data->camera.z_rot = 0;
-	data->camera.zoom = 20;
+	data->camera.zoom = 40;
 	data->camera.height = 40;
 }
 
@@ -43,7 +43,7 @@ void	ft_camera_panoramic(t_data *data)
 	data->camera.x_rot = 0.800000;
 	data->camera.y_rot = -0.050000;
 	data->camera.z_rot = 0.800000;
-	data->camera.zoom = 20;
+	data->camera.zoom = 40;
 	data->camera.height = 40;
 }
 

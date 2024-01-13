@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:14:04 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 11:28:10 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:00:57 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_load_assets(t_data *data)
 {
 	int32_t	menu_width;
 
-	menu_width = 300;
+	menu_width = 350;
 	data->canva.icon = mlx_load_png("./img/icon.png");
 	mlx_set_icon(data->mlx, data->canva.icon);
 	data->canva.menu = mlx_new_image(data->mlx, menu_width, HEIGHT);
