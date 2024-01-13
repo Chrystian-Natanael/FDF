@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:16:01 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 11:18:51 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:49:23 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,40 @@ void	ft_build_lines(t_data *data)
 		x = 0;
 		while (x < data->map_width)
 		{
-			ft_draw_line(data, x, y);
+				ft_draw_line(data, x, y);
 			x++;
 		}
 		y++;
 	}
 }
+	// if (x != data->map_width - 1 && (ft_get_z(x, y, data) > 0 && data->forfun == 1))
 
 void	ft_draw_line(t_data *data, int32_t x, int32_t y)
 {
-	if (x != data->map_width -1)
-		ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-		ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
-	if (y != data->map_height -1)
-		ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-		ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+	if (x != data->map_width - 1)
+	{
+		if (data->forfun == 0)
+		
+			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+			ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+			
+		else if ((ft_get_z(x,y, data) > 0) && data->forfun == 1)
+		
+			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+			ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+	}
+	if (y != data->map_height - 1)
+	{
+		if (data->forfun == 0)
+
+			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+			ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+
+		else if ((ft_get_z(x,y, data) > 0) && data->forfun == 1)
+			
+			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+			ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+	}
 }
 
 void	ft_plot_line(t_data *data, t_point start, t_point end)

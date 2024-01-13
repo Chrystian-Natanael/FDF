@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 18:43:00 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:21:46 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_data
 	t_canva		canva;
 	t_cam		camera;
 	bool		auto_spin;
+	bool		forfun;
 }				t_data;
 
 typedef struct s_bresen

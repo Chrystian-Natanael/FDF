@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:22:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 19:19:37 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:10:13 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,12 @@ void	ft_change_color(mlx_key_data_t keydata, void *param)
 			data->auto_spin = 0;
 		else
 			data->auto_spin = 1;
+	}
+	if (keydata.key == MLX_KEY_F && keydata.action == MLX_PRESS)
+	{
+		if (data->forfun == 1)
+			data->forfun = 0;
+		else
+			data->forfun = 1;
 	}
 }
