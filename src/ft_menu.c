@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:52:32 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 04:02:26 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:20:17 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,25 @@ int32_t	ft_count_line(char *line)
 			idx++;
 	}
 	return (count);
+}
+
+void	ft_validate_map(char *line, int32_t fd, char *buffer)
+{
+	if (ft_is_retangule(ft_count_line(line)))
+	{
+		free(line);
+		free(buffer);
+		close(fd);
+		ft_error("Error: map must be a retangule");
+	}
+}
+
+void	ft_verify_is_null(char *line, int *fd)
+{
+	if (ft_strlen(line) == 0)
+	{
+		free(line);
+		close (*fd);
+		ft_error("Error: Invalid Map!");
+	}
 }

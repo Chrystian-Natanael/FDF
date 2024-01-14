@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:30:54 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 08:12:39 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:18:24 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,17 @@ t_cords	*ft_parse_map(t_data *data, char *fd_map)
 	fd = open(fd_map, O_RDONLY);
 	if (fd < 0 || !ft_strnstr(fd_map, ".fdf", ft_strlen(fd_map)))
 		ft_error("Invalid map or extension.");
+	line = get_next_line(fd);
+	ft_verify_is_null(line, &fd);
 	while (true)
 	{
-		line = get_next_line(fd);
-		if (line)
-		{
-			if (ft_is_retangule(ft_count_line(line)))
-				ft_error("Error: map must be a retangule");
-			buffer = ft_str_append(buffer, line);
-			data->map_height++;
-		}
-		else
+		if (!line)
 			break ;
+		ft_validate_map(line, fd, buffer);
+		buffer = ft_str_append(buffer, line);
+		data->map_height++;
 		free (line);
+		line = get_next_line(fd);
 	}
 	close (fd);
 	return (ft_get_cords(data, buffer));
