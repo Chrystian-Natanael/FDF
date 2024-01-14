@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:16:01 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 20:49:23 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:45:10 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,44 @@ void	ft_draw_line(t_data *data, int32_t x, int32_t y)
 	if (x != data->map_width - 1)
 	{
 		if (data->forfun == 0)
-		
-			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-			ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
-			
+		{
+			if (data->typeline == 1)
+				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+			else
+				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+		}
 		else if ((ft_get_z(x,y, data) > 0) && data->forfun == 1)
-		
-			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-			ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+		{
+			if (data->typeline == 1)
+				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+			else
+				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
+		}
 	}
 	if (y != data->map_height - 1)
 	{
 		if (data->forfun == 0)
-
-			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-			ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
-
+		{
+			if (data->typeline == 1)
+				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+			else
+				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+		}
 		else if ((ft_get_z(x,y, data) > 0) && data->forfun == 1)
-			
-			ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-			ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+		{
+			if (data->typeline == 1)
+				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+			else
+				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
+				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 19:21:46 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:52:57 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_data
 	t_cam		camera;
 	bool		auto_spin;
 	bool		forfun;
+	bool		typeline;
 }				t_data;
 
 typedef struct s_bresen
@@ -87,6 +88,22 @@ typedef struct s_bresen
 	t_point	*cur;
 	int32_t	error;
 }	t_bresen;
+
+typedef struct s_xiao
+{
+	t_point	delta;
+	double	gradient;
+	double	xend;
+	double	yend;
+	double	xgap;
+	double	ygap;
+	double	xpxl1;
+	double	ypxl1;
+	double	intery;
+	double	interx;
+	double	xpxl2;
+	double	ypxl2;
+}	t_xiao;
 
 typedef enum e_typeline
 {
@@ -135,11 +152,17 @@ void		ft_rotation_x(int32_t *y, int32_t *z, double x);
 void		ft_rotation_y(int *x, int *z, double y);
 void		ft_rotation_z(int *x, int *y, double z);
 
-void	ft_commands(t_data *data);
-void	ft_zoom(t_data *data);
-void	ft_rotation_all(t_data *data);
+void		ft_commands(t_data *data);
+void		ft_zoom(t_data *data);
+void		ft_rotation_all(t_data *data);
 
-void	ft_render_menu(t_data *data);
-void	ft_explain_commands(t_data *data);
+void		ft_render_menu(t_data *data);
+void		ft_explain_commands(t_data *data);
+
+void		put_valid_pixel(t_data *data, int x, int y, uint32_t color);
+uint32_t	set_brightness(uint32_t color, float brightness);
+void		ft_settings_vars_xiao( t_data *data, t_xiao *vars, t_point *start, \
+t_point *end);
+void		ft_plot_line_xin(t_data *data, t_point start, t_point end);
 
 #endif
