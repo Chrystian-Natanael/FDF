@@ -80,7 +80,7 @@ CC = cc
 #                                 FLAGS E COMP                                   #
 #! ******************************************************************************#
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 LDLIBS = -lft -lmlx42 -ldl -lglfw -pthread -lm
 LDFLAGS = $(addprefix -L,$(dir $(LIBS)))

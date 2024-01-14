@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 06:58:41 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 02:40:13 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 09:15:53 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ void	ft_validate_args(int32_t argc)
 	}
 }
 
+void	ft_init_bools(t_data *data)
+{
+	data->auto_spin = 0;
+	data->forfun = 0;
+	data->typeline = 0;
+	data->cords->color = WHITE;
+}
+
 int	main(int32_t argc, char **argv)
 {
 	t_data	data;
@@ -66,6 +74,7 @@ int	main(int32_t argc, char **argv)
 
 	ft_validate_args(argc);
 	data.cords = ft_parse_map(&data, argv[1]);
+	ft_init_bools(&data);
 	mlx = mlx_init(WIDTH, HEIGHT, "FDF", true);
 	if (mlx)
 	{
@@ -73,13 +82,13 @@ int	main(int32_t argc, char **argv)
 		ft_load_assets(&data);
 		data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 		mlx_image_to_window(data.mlx, data.image, 0, 0);
-		data.cords->color = WHITE;
 		ft_camera_projection(&data);
 		ft_render_menu(&data);
 		mlx_loop_hook(data.mlx, ft_button, &data);
 		mlx_key_hook(data.mlx, ft_change_color, &data);
 		mlx_loop(data.mlx);
 		mlx_terminate(data.mlx);
+		mlx_delete_texture(data.canva.icon);
 		free(data.cords);
 		exit(EXIT_SUCCESS);
 	}

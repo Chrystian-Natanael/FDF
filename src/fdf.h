@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 03:51:07 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 09:14:47 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,6 @@ int			round_(double X);
 double		fpart_(double X);
 double		rfpart_(double X);
 void		swap(double *a, double *b);
+void		ft_init_bools(t_data *data);
 
 #endif
