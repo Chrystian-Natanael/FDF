@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:24:46 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 00:27:36 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:44:39 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,28 @@ void	put_valid_pixel(t_data *data, int x, int y, uint32_t color)
 uint32_t set_brightness(uint32_t color, float brightness)
 {
 	int	brightness_rgba;
-
 	brightness_rgba = brightness * 255;
-	return (color | brightness_rgba);
+	return ((color & 0xFFFFFF00) | brightness_rgba); // ! e aqui
 }
 
 void	ft_plot_line_xin(t_data *data, t_point start, t_point end)
 {
-	int		x1 = start.x;
-	int		x2 = end.x;
-	int		y1 = start.y;
-	int		y2 = end.y;
-////////////////////////////////////////////////////////////////
-	int32_t	color = data->cords->color;		// COLOCAR A COR AQUI
-////////////////////////////////////////////////////////////////
-
+	int		x1;
+	int		x2;
+	int		y1;
+	int		y2;
+	
+	x1 = start.x;
+	x2 = end.x;
+	y1 = start.y;
+	y2 = end.y;
+	int32_t	color = data->cords->color; // ! mexi aqui
 	double dx = (double)x2 - (double)x1;
 	double dy = (double)y2 - (double)y1;
-	if ( absolute(dx) > absolute(dy) ) {
-		if ( x2 < x1 ) {
+	if ( absolute(dx) > absolute(dy) )
+	{
+		if ( x2 < x1 )
+		{
 			swap_(x1, x2);
 			swap_(y1, y2);
 		}
@@ -64,7 +67,6 @@ void	ft_plot_line_xin(t_data *data, t_point start, t_point end)
 		put_valid_pixel(data, xpxl1, ypxl1, set_brightness(color, rfpart_(yend)*xgap));
 		put_valid_pixel(data, xpxl1, ypxl1+1, set_brightness(color, fpart_(yend)*xgap));
 		double intery = yend + gradient;
-
 		xend = round_(x2);
 		yend = y2 + gradient*(xend - x2);
 		xgap = fpart_(x2+0.5);
@@ -72,14 +74,16 @@ void	ft_plot_line_xin(t_data *data, t_point start, t_point end)
 		int ypxl2 = ipart_(yend);
 		put_valid_pixel(data, xpxl2, ypxl2, set_brightness(color, rfpart_(yend) * xgap));
 		put_valid_pixel(data, xpxl2, ypxl2 + 1, set_brightness(color, fpart_(yend) * xgap));
-
 		int x;
-		for(x=xpxl1+1; x < xpxl2; x++) {
+		for(x=xpxl1+1; x < xpxl2; x++)
+		{
 			put_valid_pixel(data, x, ipart_(intery), set_brightness(color, rfpart_(intery)));
 			put_valid_pixel(data, x, ipart_(intery) + 1, set_brightness(color, fpart_(intery)));
 			intery += gradient;
 		}
-	} else {
+	}
+	else
+	{
 		if ( y2 < y1 ) {
 			swap_(x1, x2);
 			swap_(y1, y2);
@@ -93,7 +97,6 @@ void	ft_plot_line_xin(t_data *data, t_point start, t_point end)
 		put_valid_pixel(data, xpxl1, ypxl1, set_brightness(color, rfpart_(xend)*ygap));
 		put_valid_pixel(data, xpxl1 + 1, ypxl1, set_brightness(color, fpart_(xend)*ygap));
 		double interx = xend + gradient;
-
 		yend = round_(y2);
 		xend = x2 + gradient*(yend - y2);
 		ygap = fpart_(y2+0.5);
@@ -101,7 +104,6 @@ void	ft_plot_line_xin(t_data *data, t_point start, t_point end)
 		int xpxl2 = ipart_(xend);
 		put_valid_pixel(data, xpxl2, ypxl2, set_brightness(color, rfpart_(xend) * ygap));
 		put_valid_pixel(data, xpxl2 + 1, ypxl2, set_brightness(color, fpart_(xend) * ygap));
-
 		int y;
 		for(y=ypxl1+1; y < ypxl2; y++) {
 			put_valid_pixel(data, ipart_(interx), y, set_brightness(color, rfpart_(interx)));
