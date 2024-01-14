@@ -55,7 +55,10 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		ft_projection.c \
 		ft_commands.c \
 		ft_menu.c \
-		ft_xiaolin.c)
+		ft_xiaolin.c \
+		functions.c \
+		xiaolin_utils.c \
+		ft_draw_line_utils.c)
 SRCS_BONUS = 
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX42 = $(addprefix $(MLX42_BUILD_DIR), libmlx42.a)

@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 11:22:15 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 22:45:43 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:37:44 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,11 @@ void	ft_move(t_data *data)
 		data->camera.pos.x += MV_SP;
 }
 
-void	ft_change_color(mlx_key_data_t keydata, void *param)
+void	ft_more_keys(mlx_key_data_t keydata, void *param)
 {
-	static uint32_t	current_color = 0;
-	t_data			*data;
+	t_data	*data;
 
 	data = (t_data *)param;
-	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
-		current_color = (current_color + 1) % NUM_COLORS;
-	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
-		current_color = (current_color - 1) % NUM_COLORS;
-	data->cords->color = ft_get_color(current_color);
-	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
-	{
-		if (data->auto_spin == 1)
-			data->auto_spin = 0;
-		else
-			data->auto_spin = 1;
-	}
 	if (keydata.key == MLX_KEY_F && keydata.action == MLX_PRESS)
 	{
 		if (data->forfun == 1)

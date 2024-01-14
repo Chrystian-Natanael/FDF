@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:52:32 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 19:17:25 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:21:50 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_render_menu(t_data *data)
 	mlx_put_string(data->mlx, "88''''  88         88  88'''' \n", 20, 75);
 	mlx_put_string(data->mlx, "88      88        `8b  88     \n", 20, 90);
 	mlx_put_string(data->mlx, "88      88      .a8P   88     \n", 20, 105);
-	mlx_put_string(data->mlx, "88      88888888Y'''   88     \n", 20, 120);	
+	mlx_put_string(data->mlx, "88      88888888Y'''   88     \n", 20, 120);
 	ft_explain_commands(data);
 }
 

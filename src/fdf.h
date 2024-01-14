@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 01:34:06 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:50:04 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,22 @@ float		absolute(float x );
 void		put_valid_pixel(t_data *data, int x, int y, uint32_t color);
 uint32_t	set_brightness(uint32_t color, float brightness);
 void		ft_plot_line_xin(t_data *data, t_point start, t_point end);
-void		ft_set_vars_p1(t_xiao *vars, t_point start, t_point end, t_data *data);
+void		ft_set_vars_p1(t_xiao *vars, t_point start, t_point end, \
+t_data *data);
 void		ft_set_vars_p2(t_xiao *vars, t_data *data);
 void		ft_set_vars_p3(t_xiao *vars, t_data *data);
+void		ft_process_p1(t_data *data, t_xiao *vars);
+void		ft_process_p2(t_data *data, t_xiao *vars);
+void	ft_is_ff_p1(t_data *data, int32_t x, int32_t y);
+void	ft_is_ff_p2(t_data *data, int32_t x, int32_t y);
+
+
+void		ft_more_keys(mlx_key_data_t keydata, void *param);
+
+int			ipart_(double X);
+int			round_(double X);
+double		fpart_(double X);
+double		rfpart_(double X);
+void		swap(double *a, double *b);
 
 #endif

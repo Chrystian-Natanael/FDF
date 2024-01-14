@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 06:58:41 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 17:57:03 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:40:13 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,27 @@ void	ft_button(void *param)
 	ft_move(data);
 	ft_commands(data);
 	ft_build_lines(data);
+}
+
+void	ft_change_color(mlx_key_data_t keydata, void *param)
+{
+	static uint32_t	current_color = 0;
+	t_data			*data;
+
+	data = (t_data *)param;
+	if (keydata.key == MLX_KEY_C && keydata.action == MLX_PRESS)
+		current_color = (current_color + 1) % NUM_COLORS;
+	if (keydata.key == MLX_KEY_V && keydata.action == MLX_PRESS)
+		current_color = (current_color - 1) % NUM_COLORS;
+	data->cords->color = ft_get_color(current_color);
+	if (keydata.key == MLX_KEY_1 && keydata.action == MLX_PRESS)
+	{
+		if (data->auto_spin == 1)
+			data->auto_spin = 0;
+		else
+			data->auto_spin = 1;
+	}
+	ft_more_keys(keydata, data);
 }
 
 void	ft_validate_args(int32_t argc)

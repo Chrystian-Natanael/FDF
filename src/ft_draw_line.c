@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:16:01 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 01:28:53 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 02:47:38 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,58 +24,19 @@ void	ft_build_lines(t_data *data)
 		x = 0;
 		while (x < data->map_width)
 		{
-				ft_draw_line(data, x, y);
+			ft_draw_line(data, x, y);
 			x++;
 		}
 		y++;
 	}
 }
-	// if (x != data->map_width - 1 && (ft_get_z(x, y, data) > 0 && data->forfun == 1))
 
 void	ft_draw_line(t_data *data, int32_t x, int32_t y)
 {
 	if (x != data->map_width - 1)
-	{
-		if (data->forfun == 0)
-		{
-			if (data->typeline == 1)
-				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
-			else
-				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
-		}
-		else if (((ft_get_z(x,y, data) > 0) || (ft_get_z(x + 1,y, data) > 0)) && data->forfun == 1)
-		{
-			if (data->typeline == 1)
-				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
-			else
-				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x + 1, y, ft_get_z(x + 1, y, data), data));
-		}
-	}
+		ft_is_ff_p1(data, x, y);
 	if (y != data->map_height - 1)
-	{
-		if (data->forfun == 0)
-		{
-			if (data->typeline == 1)
-				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
-			else
-				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
-		}
-		else if (((ft_get_z(x,y, data) > 0) || (ft_get_z(x,y + 1, data) > 0)) && data->forfun == 1)
-		{
-			if (data->typeline == 1)
-				ft_plot_line(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
-			else
-				ft_plot_line_xin(data, ft_projection(x, y, ft_get_z(x, y, data), data), \
-				ft_projection(x, y + 1, ft_get_z(x, y + 1, data), data));
-		}
-	}
+		ft_is_ff_p2(data, x, y);
 }
 
 void	ft_plot_line(t_data *data, t_point start, t_point end)
