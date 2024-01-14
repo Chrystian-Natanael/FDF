@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:52:32 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 02:21:50 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 03:15:49 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ void	ft_render_menu(t_data *data)
 void	ft_explain_commands(t_data *data)
 {
 	mlx_put_string(data->mlx, "-----------------------------", 20, 160);
-	mlx_put_string(data->mlx, "Increase Scale Z == 'J'", 40, 200);
-	mlx_put_string(data->mlx, "Decrease Scale Z == 'K'", 40, 240);
-	mlx_put_string(data->mlx, "Zoom In == '+'", 40, 280);
-	mlx_put_string(data->mlx, "Zoom Out == '-'", 40, 320);
-	mlx_put_string(data->mlx, "Move Up == 'W'", 40, 360);
-	mlx_put_string(data->mlx, "Move Down == 'S'", 40, 400);
-	mlx_put_string(data->mlx, "Move Left == 'A'", 40, 440);
-	mlx_put_string(data->mlx, "Move Right == 'D'", 40, 480);
-	mlx_put_string(data->mlx, "Rotate Asis+X == 'RIGHT'", 40, 520);
-	mlx_put_string(data->mlx, "Rotate Asis-X == 'LEFT'", 40, 560);
-	mlx_put_string(data->mlx, "Rotate Asis+Y == 'UP'", 40, 600);
-	mlx_put_string(data->mlx, "Rotate Asis-Y == 'DOWN'", 40, 640);
-	mlx_put_string(data->mlx, "Rotate Asis-Z == 'Q'", 40, 680);
-	mlx_put_string(data->mlx, "Rotate Asis+Z == 'E'", 40, 720);
-	mlx_put_string(data->mlx, "Perspective == '2 - 4'", 40, 760);
-	mlx_put_string(data->mlx, "Change Color + == 'C'", 40, 800);
-	mlx_put_string(data->mlx, "Change Color - == 'V'", 40, 840);
-	mlx_put_string(data->mlx, "Auto Rotate ON/OFF == '1'", 40, 880);
-	mlx_put_string(data->mlx, "For Fun == 'F'", 40, 920);
-	mlx_put_string(data->mlx, "CLOSE PROGRAM == 'ESC'", 40, 950);
+	mlx_put_string(data->mlx, "Increase Scale Z == 'J'", 30, 200);
+	mlx_put_string(data->mlx, "Decrease Scale Z == 'K'", 30, 240);
+	mlx_put_string(data->mlx, "Zoom In == '+'", 30, 280);
+	mlx_put_string(data->mlx, "Zoom Out == '-'", 30, 320);
+	mlx_put_string(data->mlx, "Move Up == 'W'", 30, 360);
+	mlx_put_string(data->mlx, "Move Down == 'S'", 30, 400);
+	mlx_put_string(data->mlx, "Move Left == 'A'", 30, 440);
+	mlx_put_string(data->mlx, "Move Right == 'D'", 30, 480);
+	mlx_put_string(data->mlx, "Rotate Asis+X == 'RIGHT'", 30, 520);
+	mlx_put_string(data->mlx, "Rotate Asis-X == 'LEFT'", 30, 560);
+	mlx_put_string(data->mlx, "Rotate Asis+Y == 'UP'", 30, 600);
+	mlx_put_string(data->mlx, "Rotate Asis-Y == 'DOWN'", 30, 640);
+	mlx_put_string(data->mlx, "Rotate Asis-Z == 'Q'", 30, 680);
+	mlx_put_string(data->mlx, "Rotate Asis+Z == 'E'", 30, 720);
+	mlx_put_string(data->mlx, "Top-Down == '2' || Reset == 'R'", 30, 760);
+	mlx_put_string(data->mlx, "Change Color == 'C'", 30, 800);
+	mlx_put_string(data->mlx, "Change Type LINE B/X == 'Y'", 30, 840);
+	mlx_put_string(data->mlx, "Auto Rotate ON/OFF == '1'", 30, 880);
+	mlx_put_string(data->mlx, "For Fun == 'F'", 30, 920);
+	mlx_put_string(data->mlx, "CLOSE PROGRAM == 'ESC'", 30, 950);
 }

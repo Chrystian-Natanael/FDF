@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:20:13 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 23:02:51 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 03:10:20 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,23 @@ int	ft_ternary(bool condition, int if_true, int if_false)
 
 void	ft_camera_projection(t_data *data)
 {
-	data->camera.pos.x = 150;
-	data->camera.pos.y = -200;
-	data->camera.x_rot = 0;
-	data->camera.y_rot = 0;
+	data->camera.pos.x = 0;
+	data->camera.pos.y = -100;
+	data->camera.x_rot = -1.100000;
+	data->camera.y_rot = -0.650000;
 	data->camera.z_rot = 0;
 	data->camera.zoom = 40;
-	data->camera.height = 40;
+	data->camera.height = 50;
 }
 
 void	ft_camera_panoramic(t_data *data)
 {
-	data->camera.pos.x = 300;
-	data->camera.pos.y = -100;
-	data->camera.x_rot = 0.800000;
-	data->camera.y_rot = -0.050000;
-	data->camera.z_rot = .900000;
-	data->camera.zoom = 40;
+	data->camera.pos.x = -200;
+	data->camera.pos.y = -200;
+	data->camera.x_rot = 0.0;
+	data->camera.y_rot = 0.0;
+	data->camera.z_rot = 0.0;
+	data->camera.zoom = 50;
 	data->camera.height = 40;
 }
 
