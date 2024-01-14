@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:52:32 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 03:15:49 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 04:02:26 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,23 @@ void	ft_explain_commands(t_data *data)
 	mlx_put_string(data->mlx, "Auto Rotate ON/OFF == '1'", 30, 880);
 	mlx_put_string(data->mlx, "For Fun == 'F'", 30, 920);
 	mlx_put_string(data->mlx, "CLOSE PROGRAM == 'ESC'", 30, 950);
+}
+
+int32_t	ft_count_line(char *line)
+{
+	int32_t	idx;
+	int32_t	count;
+
+	idx = 0;
+	count = 0;
+	while (line[idx])
+	{
+		while (ft_isspace(line[idx]) && line[idx])
+			idx++;
+		if (ft_isdigit(line[idx]))
+			count++;
+		while (!ft_isspace(line[idx]) && line[idx])
+			idx++;
+	}
+	return (count);
 }

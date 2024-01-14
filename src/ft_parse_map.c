@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:30:54 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 11:34:54 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 04:09:50 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_cords	*ft_parse_map(t_data *data, char *fd_map)
 		line = get_next_line(fd);
 		if (line)
 		{
+			if (ft_is_retangule(ft_count_line(line)))
+				ft_error("Error: map must be a retangule");
 			buffer = ft_str_append(buffer, line);
 			data->map_height++;
 		}
@@ -39,6 +41,17 @@ t_cords	*ft_parse_map(t_data *data, char *fd_map)
 	return (ft_get_cords(data, buffer));
 }
 
+bool	ft_is_retangule(int32_t value)
+{
+	static int32_t	old_value;
+
+	if (!old_value)
+		old_value = value;
+	if (old_value == value)
+		return (0);
+	return (1);
+}
+
 t_cords	*ft_get_cords(t_data *data, char *line)
 {
 	int32_t	size_l;
@@ -48,7 +61,7 @@ t_cords	*ft_get_cords(t_data *data, char *line)
 
 	line_cpy = line;
 	size_l = (int32_t)ft_strlen(line);
-	cords = calloc(size_l + 1, sizeof(t_cords));
+	cords = ft_calloc(size_l + 1, sizeof(t_cords));
 	idx = 0;
 	while (idx < size_l)
 	{

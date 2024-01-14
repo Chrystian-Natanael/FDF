@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 02:55:03 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 03:51:07 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,9 +174,10 @@ void		ft_set_vars_p2(t_xiao *vars, t_data *data);
 void		ft_set_vars_p3(t_xiao *vars, t_data *data);
 void		ft_process_p1(t_data *data, t_xiao *vars);
 void		ft_process_p2(t_data *data, t_xiao *vars);
-void	ft_is_ff_p1(t_data *data, int32_t x, int32_t y);
-void	ft_is_ff_p2(t_data *data, int32_t x, int32_t y);
-
+void		ft_is_ff_p1(t_data *data, int32_t x, int32_t y);
+void		ft_is_ff_p2(t_data *data, int32_t x, int32_t y);
+bool		ft_is_retangule(int32_t value);
+int32_t		ft_count_line(char *line);
 
 void		ft_more_keys(mlx_key_data_t keydata, void *param);
 
