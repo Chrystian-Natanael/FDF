@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 22:52:57 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 01:34:06 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,12 @@ typedef struct s_bresen
 
 typedef struct s_xiao
 {
-	t_point	delta;
+	double	x1;
+	double	x2;
+	double	y1;
+	double	y2;
+	double	dx;
+	double	dy;
 	double	gradient;
 	double	xend;
 	double	yend;
@@ -103,6 +108,7 @@ typedef struct s_xiao
 	double	interx;
 	double	xpxl2;
 	double	ypxl2;
+	int32_t	color;
 }	t_xiao;
 
 typedef enum e_typeline
@@ -143,7 +149,6 @@ t_point		ft_projection(int32_t x, int32_t y, int32_t z, t_data *data);
 t_point		ft_build_point(int32_t x, int32_t y);
 uint32_t	ft_get_color(uint32_t current_color);
 int32_t		ft_get_z(int32_t x, int32_t y, t_data *data);
-void		ft_isometric(int32_t *x, int32_t *y, int32_t z);
 void		ft_camera_panoramic(t_data *data);
 void		ft_settings_vars(t_bresen *vars, t_point *start, \
 t_point *end);
@@ -159,10 +164,12 @@ void		ft_rotation_all(t_data *data);
 void		ft_render_menu(t_data *data);
 void		ft_explain_commands(t_data *data);
 
+float		absolute(float x );
 void		put_valid_pixel(t_data *data, int x, int y, uint32_t color);
 uint32_t	set_brightness(uint32_t color, float brightness);
-void		ft_settings_vars_xiao( t_data *data, t_xiao *vars, t_point *start, \
-t_point *end);
 void		ft_plot_line_xin(t_data *data, t_point start, t_point end);
+void		ft_set_vars_p1(t_xiao *vars, t_point start, t_point end, t_data *data);
+void		ft_set_vars_p2(t_xiao *vars, t_data *data);
+void		ft_set_vars_p3(t_xiao *vars, t_data *data);
 
 #endif

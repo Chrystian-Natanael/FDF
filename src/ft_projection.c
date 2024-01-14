@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 10:32:19 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/13 11:06:14 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 01:08:56 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_point	ft_projection(int32_t x, int32_t y, int32_t z, t_data *data)
 	x *= data->camera.zoom;
 	y *= data->camera.zoom;
 	z *= (data->camera.zoom * data->camera.height) / 100.0f;
-	ft_isometric(&x, &y, z);
 	ft_rotation_x(&y, &z, data->camera.x_rot);
 	ft_rotation_y(&x, &z, data->camera.y_rot);
 	ft_rotation_z(&x, &y, data->camera.z_rot);
@@ -57,15 +56,4 @@ void	ft_rotation_z(int *x, int *y, double z)
 	prev_y = *y;
 	*x = prev_x * cos(z) - prev_y * sin(z);
 	*y = prev_x * sin(z) + prev_y * cos(z);
-}
-
-void	ft_isometric(int32_t *x, int32_t *y, int32_t z)
-{
-	int32_t	prev_x;
-	int32_t	prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-	*x = (prev_x - prev_y) * cos(0.5235988);
-	*y = -z + (prev_x + prev_y) * sin(0.5235988);
 }

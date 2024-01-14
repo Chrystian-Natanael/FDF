@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:24:46 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 00:44:39 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/14 01:39:31 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,81 +34,101 @@ uint32_t set_brightness(uint32_t color, float brightness)
 {
 	int	brightness_rgba;
 	brightness_rgba = brightness * 255;
-	return ((color & 0xFFFFFF00) | brightness_rgba); // ! e aqui
+	return ((color & 0xFFFFFF00) | brightness_rgba);
 }
 
 void	ft_plot_line_xin(t_data *data, t_point start, t_point end)
 {
-	int		x1;
-	int		x2;
-	int		y1;
-	int		y2;
+	t_xiao	vars;
 	
-	x1 = start.x;
-	x2 = end.x;
-	y1 = start.y;
-	y2 = end.y;
-	int32_t	color = data->cords->color; // ! mexi aqui
-	double dx = (double)x2 - (double)x1;
-	double dy = (double)y2 - (double)y1;
-	if ( absolute(dx) > absolute(dy) )
+	ft_set_vars_p1(&vars, start, end, data);
+	if (absolute(vars.dx) > absolute(vars.dy))
 	{
-		if ( x2 < x1 )
+		if ( vars.x2 < vars.x1 )
 		{
-			swap_(x1, x2);
-			swap_(y1, y2);
+			swap_(vars.x1, vars.x2);
+			swap_(vars.y1, vars.y2);
 		}
-		double gradient = dy / dx;
-		double xend = round_(x1);
-		double yend = y1 + gradient*(xend - x1);
-		double xgap = rfpart_(x1 + 0.5);
-		int xpxl1 = xend;
-		int ypxl1 = ipart_(yend);
-		put_valid_pixel(data, xpxl1, ypxl1, set_brightness(color, rfpart_(yend)*xgap));
-		put_valid_pixel(data, xpxl1, ypxl1+1, set_brightness(color, fpart_(yend)*xgap));
-		double intery = yend + gradient;
-		xend = round_(x2);
-		yend = y2 + gradient*(xend - x2);
-		xgap = fpart_(x2+0.5);
-		int xpxl2 = xend;
-		int ypxl2 = ipart_(yend);
-		put_valid_pixel(data, xpxl2, ypxl2, set_brightness(color, rfpart_(yend) * xgap));
-		put_valid_pixel(data, xpxl2, ypxl2 + 1, set_brightness(color, fpart_(yend) * xgap));
+		ft_set_vars_p2(&vars, data);
 		int x;
-		for(x=xpxl1+1; x < xpxl2; x++)
+		for(x=vars.xpxl1+1; x < vars.xpxl2; x++)
 		{
-			put_valid_pixel(data, x, ipart_(intery), set_brightness(color, rfpart_(intery)));
-			put_valid_pixel(data, x, ipart_(intery) + 1, set_brightness(color, fpart_(intery)));
-			intery += gradient;
+			put_valid_pixel(data, x, ipart_(vars.intery), set_brightness(vars.color, rfpart_(vars.intery)));
+			put_valid_pixel(data, x, ipart_(vars.intery) + 1, set_brightness(vars.color, fpart_(vars.intery)));
+			vars.intery += vars.gradient;
 		}
 	}
 	else
 	{
-		if ( y2 < y1 ) {
-			swap_(x1, x2);
-			swap_(y1, y2);
+		if ( vars.y2 < vars.y1 ) {
+			swap_(vars.x1, vars.x2);
+			swap_(vars.y1, vars.y2);
 		}
-		double gradient = dx / dy;
-		double yend = round_(y1);
-		double xend = x1 + gradient*(yend - y1);
-		double ygap = rfpart_(y1 + 0.5);
-		int ypxl1 = yend;
-		int xpxl1 = ipart_(xend);
-		put_valid_pixel(data, xpxl1, ypxl1, set_brightness(color, rfpart_(xend)*ygap));
-		put_valid_pixel(data, xpxl1 + 1, ypxl1, set_brightness(color, fpart_(xend)*ygap));
-		double interx = xend + gradient;
-		yend = round_(y2);
-		xend = x2 + gradient*(yend - y2);
-		ygap = fpart_(y2+0.5);
-		int ypxl2 = yend;
-		int xpxl2 = ipart_(xend);
-		put_valid_pixel(data, xpxl2, ypxl2, set_brightness(color, rfpart_(xend) * ygap));
-		put_valid_pixel(data, xpxl2 + 1, ypxl2, set_brightness(color, fpart_(xend) * ygap));
+		ft_set_vars_p3(&vars, data);
 		int y;
-		for(y=ypxl1+1; y < ypxl2; y++) {
-			put_valid_pixel(data, ipart_(interx), y, set_brightness(color, rfpart_(interx)));
-			put_valid_pixel(data, ipart_(interx) + 1, y, set_brightness(color, fpart_(interx)));
-			interx += gradient;
+		for(y=vars.ypxl1+1; y < vars.ypxl2; y++) {
+			put_valid_pixel(data, ipart_(vars.interx), y, set_brightness(vars.color, rfpart_(vars.interx)));
+			put_valid_pixel(data, ipart_(vars.interx) + 1, y, set_brightness(vars.color, fpart_(vars.interx)));
+			vars.interx += vars.gradient;
 		}
 	}
+}
+
+void	ft_set_vars_p1(t_xiao *vars, t_point start, t_point end, t_data *data)
+{
+	vars->x1 = start.x;
+	vars->x2 = end.x;
+	vars->y1 = start.y;
+	vars->y2 = end.y;
+	vars->color = data->cords->color;
+	vars->dx = (double)vars->x2 - (double)vars->x1;
+	vars->dy = (double)vars->y2 - (double)vars->y1;
+}
+
+void	ft_set_vars_p2(t_xiao *vars, t_data *data)
+{
+	vars->gradient = vars->dy / vars->dx;
+	vars->xend = round_(vars->x1);
+	vars->yend = vars->y1 + vars->gradient*(vars->xend - vars->x1);
+	vars->xgap = rfpart_(vars->x1 + 0.5);
+	vars->xpxl1 = vars->xend;
+	vars->ypxl1 = ipart_(vars->yend);
+	put_valid_pixel(data, vars->xpxl1, vars->ypxl1, set_brightness\
+	(vars->color, rfpart_(vars->yend)* vars->xgap));
+	put_valid_pixel(data, vars->xpxl1, vars->ypxl1+1, set_brightness\
+	(vars->color, fpart_(vars->yend)* vars->xgap));
+	vars->intery = vars->yend + vars->gradient;
+	vars->xend = round_(vars->x2);
+	vars->yend = vars->y2 + vars->gradient*(vars->xend - vars->x2);
+	vars->xgap = fpart_(vars->x2+0.5);
+	vars->xpxl2 = vars->xend;
+	vars->ypxl2 = ipart_(vars->yend);
+	put_valid_pixel(data, vars->xpxl2, vars->ypxl2, set_brightness\
+	(vars->color, rfpart_(vars->yend) * vars->xgap));
+	put_valid_pixel(data, vars->xpxl2, vars->ypxl2 + 1, set_brightness\
+	(vars->color, fpart_(vars->yend) * vars->xgap));
+}
+
+void	ft_set_vars_p3(t_xiao *vars, t_data *data)
+{
+	vars->gradient = vars->dx / vars->dy;
+	vars->yend = round_(vars->y1);
+	vars->xend = vars->x1 + vars->gradient*(vars->yend - vars->y1);
+	vars->ygap = rfpart_(vars->y1 + 0.5);
+	vars->ypxl1 = vars->yend;
+	vars->xpxl1 = ipart_(vars->xend);
+	put_valid_pixel(data, vars->xpxl1, vars->ypxl1, set_brightness\
+	(vars->color, rfpart_(vars->xend) * vars->ygap));
+	put_valid_pixel(data, vars->xpxl1 + 1, vars->ypxl1, set_brightness\
+	(vars->color, fpart_(vars->xend) * vars->ygap));
+	vars->interx = vars->xend + vars->gradient;
+	vars->yend = round_(vars->y2);
+	vars->xend = vars->x2 + vars->gradient*(vars->yend - vars->y2);
+	vars->ygap = fpart_(vars->y2+0.5);
+	vars->ypxl2 = vars->yend;
+	vars->xpxl2 = ipart_(vars->xend);
+	put_valid_pixel(data, vars->xpxl2, vars->ypxl2, set_brightness\
+	(vars->color, rfpart_(vars->xend) * vars->ygap));
+	put_valid_pixel(data, vars->xpxl2 + 1, vars->ypxl2, set_brightness\
+	(vars->color, fpart_(vars->xend) * vars->ygap));
 }
