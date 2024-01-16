@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:52:32 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 12:20:17 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:39:17 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int32_t	ft_count_line(char *line)
 	{
 		while (ft_isspace(line[idx]) && line[idx])
 			idx++;
-		if (ft_isdigit(line[idx]))
+		if (ft_isdigit(line[idx]) || line[idx] == '-')
 			count++;
 		while (!ft_isspace(line[idx]) && line[idx])
 			idx++;
