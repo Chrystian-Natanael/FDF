@@ -6,7 +6,7 @@
 /*   By: cnatanae <cnatanae@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 05:58:53 by cnatanae          #+#    #+#             */
-/*   Updated: 2024/01/14 12:19:17 by cnatanae         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:55:43 by cnatanae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,5 +189,7 @@ void		swap(double *a, double *b);
 void		ft_init_bools(t_data *data);
 void		ft_validate_map(char *line, int32_t fd, char *buffer);
 void		ft_verify_is_null(char *line, int *fd);
+
+void	ft_scroll_hook(double xdelta, double ydelta, t_data *data);
 
 #endif
