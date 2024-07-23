@@ -3,7 +3,6 @@
 #! ******************************************************************************#
 
 NAME = fdf
-NAME_BONUS = fdf_bonus
 .DEFAULT_GOAL := all
 .PHONY: all clean fclean re
 .SILENT:
@@ -30,16 +29,6 @@ LIBMLX	:= ./lib/MLX42/
 LIBFT_DIR := ./lib/libft/
 MLX42_BUILD_DIR := ./lib/MLX42/build/
 
-
-#! ******************************************************************************#
-#                                   DEFINE                                       #
-#! ******************************************************************************#
-
-ifdef WITH_BONUS
-	OBJS = $(OBJS_BONUS)
-	NAME = $(NAME_BONUS)
-endif
-
 #! ******************************************************************************#
 #                                   FILES                                        #
 #! ******************************************************************************#
@@ -57,27 +46,12 @@ SRCS =	$(addprefix $(SRCS_PATH),\
 		functions.c \
 		xiaolin_utils.c \
 		ft_draw_line_utils.c)
-		
-SRCS_BONUS =	$(addprefix $(SRCS_PATH),\
-		main_bonus.c \
-		ft_parse_map_bonus.c \
-		ft_assets_bonus.c \
-		ft_utils_bonus.c \
-		ft_draw_line_bonus.c \
-		ft_projection_bonus.c \
-		ft_commands_bonus.c \
-		ft_menu_bonus.c \
-		ft_xiaolin_bonus.c \
-		functions_bonus.c \
-		xiaolin_utils_bonus.c \
-		ft_draw_line_utils_bonus.c)
 
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX42 = $(addprefix $(MLX42_BUILD_DIR), libmlx42.a)
 LIBS := ./lib/libft/libft.a \
 	./lib/MLX42/build/libmlx42.a
 OBJS = $(SRCS:%.c=$(BUILD_DIR)%.o)
-OBJS_BONUS = $(SRCS_BONUS:%.c=$(BUILD_DIR)%.o)
 DEPS = $(OBJS:.o=.d)
 
 #! ******************************************************************************#
@@ -109,10 +83,6 @@ define create_dir
 	$(MKDIR) $(dir $@)
 endef
 
-define bonus
-	$(MAKE) WITH_BONUS=TRUE
-endef
-
 define comp_objs
 	$(eval COUNT=$(shell expr $(COUNT) + 1))
 	$(COMP_OBJ)
@@ -139,6 +109,7 @@ define comp_exe
 	printf "\n"
 	printf "$(GREEN)FDF ->$(RESET)$(PURPLE) READY\n$(RESET)"
 endef
+
 #! ******************************************************************************#
 #                                   TARGETS                                      #
 #! ******************************************************************************#
@@ -164,13 +135,9 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(NAME_BONUS)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(RM) $(MLX42_BUILD_DIR)/libmlx42.a
 
 re: fclean all
-
-bonus:
-	$(call bonus)
 
 -include $(DEPS)
